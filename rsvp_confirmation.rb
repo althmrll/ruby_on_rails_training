@@ -8,10 +8,10 @@ rsvp_confirmation={
     "James"=>"not coming"
 }
 
-rsvp_confirmation.each do
-    if rsvp_confirmation[key]=="rsvp"
+rsvp_confirmation.each do |key,value|
+    if value=="rsvp"
         puts "See you there" + key + "!!"
-    elsif rsvp_confirmation[key]=="not answered"
+    elsif value=="not answered"
         puts "I hope you can come" + key + ". Please answer by Saturday."
     else
         puts "That's unfortunate. have a nice day."
