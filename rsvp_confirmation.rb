@@ -26,7 +26,7 @@ not_coming_hc=not_coming.length
 no_answer_hc=no_answer.length
 
 puts "\n\nSummary:"
-puts "There are " + coming_head_count.to_s + " people coming."
+puts "There #{coming_head_count==1? "is":"are"} #{coming_head_count.to_s} #{coming_head_count==1? "person":"people"} coming."
 puts people_coming.keys
 
 puts "\nThere are " + no_answer_hc.to_s + " people not yet answering."
@@ -35,3 +35,4 @@ puts no_answer.keys
 puts "\nThere are " + not_coming_hc.to_s + " people not coming."
 puts not_coming.keys
 
+#ruby rsvp_confirmation.rb
