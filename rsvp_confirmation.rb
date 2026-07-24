@@ -14,7 +14,7 @@ rsvp_confirmation.each do |key,value|
     elsif value=="not answered"
         puts "I hope you can come. Please answer as soon as possible. Thank you!"
     else
-        puts "That's unfortunate. have a nice day."
+        puts "Aww... Chat me anytime if you change your mind. See you aroud #{key}"
     end
 end
 
@@ -34,5 +34,3 @@ puts no_answer.keys
 
 puts "\nThere #{not_coming_hc==1? "is":"are"} #{not_coming_hc.to_s} #{not_coming_hc==1? "person":"people"} not coming."
 puts not_coming.keys
-
-#ruby rsvp_confirmation.rb
