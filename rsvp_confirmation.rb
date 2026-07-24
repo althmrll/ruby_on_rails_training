@@ -23,4 +23,4 @@ coming_head_count=people_coming.length
 
 puts "\n\nSummary:"
 puts "There are " + coming_head_count.to_s + " people coming."
-puts people_coming
+puts people_coming.keys
