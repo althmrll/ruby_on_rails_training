@@ -12,7 +12,7 @@ rsvp_confirmation.each do |key,value|
     if value=="rsvp"
         puts "See you there " + key + "!!"
     elsif value=="not answered"
-        puts "I hope you can come. Please answer as soon as possible. Thank you!."
+        puts "I hope you can come. Please answer as soon as possible. Thank you!"
     else
         puts "That's unfortunate. have a nice day."
     end
@@ -29,10 +29,10 @@ puts "\n\nSummary:"
 puts "There #{coming_head_count==1? "is":"are"} #{coming_head_count.to_s} #{coming_head_count==1? "person":"people"} coming."
 puts people_coming.keys
 
-puts "There #{no_answer_hc==1? "is":"are"} #{no_answer_hc.to_s} #{no_answer_hc==1? "person":"people"} not yet answering."
+puts "\nThere #{no_answer_hc==1? "is":"are"} #{no_answer_hc.to_s} #{no_answer_hc==1? "person":"people"} not yet answering."
 puts no_answer.keys
 
-puts "There #{not_coming_hc==1? "is":"are"} #{not_coming_hc.to_s} #{not_coming_hc==1? "person":"people"} not coming."
+puts "\nThere #{not_coming_hc==1? "is":"are"} #{not_coming_hc.to_s} #{not_coming_hc==1? "person":"people"} not coming."
 puts not_coming.keys
 
 #ruby rsvp_confirmation.rb
