@@ -32,6 +32,6 @@ puts people_coming.keys
 puts "\nThere are " + no_answer_hc.to_s + " people not yet answering."
 puts no_answer.keys
 
-puts "\nThere are " + not_coming_hc.to_s + " people coming."
+puts "\nThere are " + not_coming_hc.to_s + " people not coming."
 puts not_coming.keys
 
