@@ -21,6 +21,6 @@ end
 people_coming=rsvp_confirmation.select {|key,value| value=="rsvp"}
 coming_head_count=people_coming.length
 
-puts "Summary:"
-puts "There are " + coming_head_count + "people coming."
+puts "\n\nSummary:"
+puts "There are " + coming_head_count.to_s + " people coming."
 puts people_coming
