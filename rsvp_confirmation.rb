@@ -10,11 +10,11 @@ rsvp_confirmation={
 
 rsvp_confirmation.each do |key,value|
     if value=="rsvp"
-        puts "See you there " + key + "!!"
+        puts "See you there " + key.upcase + "!!"
     elsif value=="not answered"
-        puts "I hope you can come. Please answer as soon as possible. Thank you!"
+        puts "I hope you can come #{key.upcase}. Please answer as soon as possible. Thank you!"
     else
-        puts "Aww... Chat me anytime if you change your mind. See you aroud #{key}"
+        puts "Aww... Chat me anytime if you change your mind. See you aroud #{key.upcase}"
     end
 end
 
