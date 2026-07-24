@@ -12,7 +12,7 @@ rsvp_confirmation.each do |key,value|
     if value=="rsvp"
         puts "See you there " + key + "!!"
     elsif value=="not answered"
-        puts "I hope you can come. Please answer by Saturday."
+        puts "I hope you can come. Please answer as soon as possible. Thank you!."
     else
         puts "That's unfortunate. have a nice day."
     end
