@@ -29,10 +29,10 @@ puts "\n\nSummary:"
 puts "There #{coming_head_count==1? "is":"are"} #{coming_head_count.to_s} #{coming_head_count==1? "person":"people"} coming."
 puts people_coming.keys
 
-puts "\nThere are " + no_answer_hc.to_s + " people not yet answering."
+puts "There #{no_answer_hc==1? "is":"are"} #{no_answer_hc.to_s} #{no_answer_hc==1? "person":"people"} not yet answering."
 puts no_answer.keys
 
-puts "\nThere are " + not_coming_hc.to_s + " people not coming."
+puts "There #{not_coming_hc==1? "is":"are"} #{not_coming_hc.to_s} #{not_coming_hc==1? "person":"people"} not coming."
 puts not_coming.keys
 
 #ruby rsvp_confirmation.rb
