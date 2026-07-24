@@ -23,7 +23,7 @@ not_coming=rsvp_confirmation.select {|key,value| value=="not coming"}
 no_answer=rsvp_confirmation.select {|key,value| value=="not answered"}
 coming_head_count=people_coming.length
 not_coming_hc=not_coming.length
-no_answer_hc=unsure.length
+no_answer_hc=no_answer.length
 
 puts "\n\nSummary:"
 puts "There are " + coming_head_count.to_s + " people coming."
