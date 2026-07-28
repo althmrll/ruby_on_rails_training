@@ -1,6 +1,7 @@
 #tic-tac-toe-game
 #ruby tic_tac_toe_game.rb
-
+#
+@grid = [" "," "," "," "," "," "," "," "," "]
 #Start menu: ask user to start the game
 def start_menu
   puts "Welcome to Tic-Tac-Toe!"
@@ -61,8 +62,6 @@ end
 
 #Print the board
 def print_board
-  @grid = [" "," "," "," "," "," "," "," "," "]
-
   puts " #{@grid[0]} | #{@grid[1]} | #{@grid[2]} "
   puts "---+---+---"
   puts " #{@grid[3]} | #{@grid[4]} | #{@grid[5]} "
@@ -76,7 +75,7 @@ def turns_mechanic
   @index=gets.chomp
   @game_events=[]
   event= "Player #{@current_player.to_s} marks position #{@index}"
-  @gmae_events.push(event)
+  @game_events.push(event)
 end
 
 #alternate between players until someone wins or the board gets full
