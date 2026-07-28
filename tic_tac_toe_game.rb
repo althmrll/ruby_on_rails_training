@@ -24,10 +24,12 @@ def user_config
       when "X" then
         player_two = "O"
         puts "player_one is #{player_one}, player two is #{player_two}"
-        
+        break
+
       when "O" then 
         player_two = "X"
         puts "player_one is #{player_one}, player two is #{player_two}"
+        break
 
       else
         puts "You can only pick between the two"
