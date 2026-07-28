@@ -59,6 +59,7 @@ def gameplay
   puts "\n==================================="
   print_board
   turns
+  @game_events.push(@event)
   print_board#Print updated board
 end
 
@@ -75,6 +76,8 @@ end
 def turns_mechanic
   puts "Where do you want to put your mark? (1-9)"
   @index=gets.chomp
+  @grid[@index.to_i]=@current_player
+  full_check
 end
 
 #alternate between players until someone wins or the board gets full
@@ -83,17 +86,27 @@ def turns
   when @player_one then 
     puts "Player 1's turn"
     turns_mechanic
-    event= "Player 1 marks position #{@index}"
-    @game_events.push(event)
-    @grid[@index.to_i]=@player_one
+    @event= "Player 1 marks position #{@index}"
     @current_player=@player_two
   when @player_two then
     puts "Player 2's turn"
     turns_mechanic
-    event= "Player 2 marks position #{@index}"
-    @game_events.push(event)
-    @grid[@index.to_i]=@player_two
+    @event= "Player 2 marks position #{@index}"
     @current_player=@player_one
+  end
+end
+
+#Checks if board it full
+def full_check
+  available=9
+  while available!=0
+    for spaces in grid[1..9]
+      if spaces.strip.empty?
+        continue
+      else
+        available-=1
+      end
+    end
   end
 end
 
