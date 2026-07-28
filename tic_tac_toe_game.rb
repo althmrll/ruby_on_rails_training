@@ -16,11 +16,24 @@ def start_menu
 end
 
 #start game (x goes first always)
+def gameplay
+end
+
 #Print the board
+def print_board
+end
+
 #Ask current player to input where they want to put their marks
 #Print updated board
 #alternate between players until someone wins or the board gets full
+def alternate
+end
 #gameplay summary (?)
+def summary
+end
+
 #ask if they want to replay or go back to main menu.
+def replay
+end
 
 start_menu
