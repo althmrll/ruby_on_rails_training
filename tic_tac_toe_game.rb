@@ -23,13 +23,13 @@ def user_config
     case @player_one
       when "X" then
         @player_two = "O"
-        @current_player=1
+        @current_player=@player_one
         puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
         break
 
       when "O" then 
         @player_two = "X"
-        @current_player=2
+        @current_player=@player_two
         puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
         break
 
@@ -70,19 +70,22 @@ end
 
 #Ask current player to input where they want to put their marks
 def turns_mechanic
-  puts "Player #{@current_player.to_s}'s turn"
   puts "Where do you want to put your mark? (1-9)"
-  index=gets.chomp
+  @index=gets.chomp
   @game_events=[]
-  event= "Player #{@current_player.to_s} marks position #{index}"
+  event= "Player #{@current_player.to_s} marks position #{@index}"
   @gmae_events.push(event)
 end
 def turns
   case @current_player
-  when "1" then 
+  when @player_one then 
     puts "Player 1's turn"
-  when "2"
+    turns_mechanic
+    @grid[@index.to_i]=@player_one
+  when @player_two then
     puts "Player 1's turn"
+    turns_mechanic
+    @grid[@index.to_i]=@player_two
   end
 end
 #Print updated board
