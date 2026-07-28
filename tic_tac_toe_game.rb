@@ -4,7 +4,7 @@
 #Start menu: ask user to start the game
 def start_menu
   puts "Welcome to Tic-Tac-Toe!"
-  puts "Would you like to start the game? (Y/N)"
+  puts "\nWould you like to start the game? (Y/N)"
   answer = gets.chomp.upcase
   
   case answer
@@ -17,22 +17,24 @@ end
 #Ask user
 def user_config
   while true
-    puts "Pick a symbol Player 1 (X/O)"
+    puts "\nPick a symbol Player 1 (X/O)"
     @player_one = gets.chomp.upcase
 
     case @player_one
       when "X" then
         @player_two = "O"
-        puts "player_one is #{@player_one}, player two is #{@player_two}"
+        puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
         break
 
       when "O" then 
         @player_two = "X"
-        puts "player_one is #{@player_one}, player two is #{@player_two}"
+        puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
         break
 
       else
+        puts "\n==================================="
         puts "You can only pick between the two"
+        puts "==================================="
     end
   end
   gameplay
@@ -40,14 +42,15 @@ end
 
 #start game
 def gameplay
+  puts "\n==================================="
   puts "The game will consist of a 3x3 board. You can type from number 1 to 9 to mark it as yours."
-  puts "The marks are as follows:"
+  puts "The marks are as follows:\n"
   puts " 1 | 2 | 3 "
   puts "---+---+---"
   puts " 4 | 5 | 6 "
   puts "---+---+---"
   puts " 7 | 8 | 9 "
-  puts "Starting Game..."
+  puts "\nStarting Game..."
 end
 
 #Print the board
@@ -61,6 +64,7 @@ def alternate
 end
 #gameplay summary (?)
 def summary
+  puts "\n==================================="
   puts "GAME SUMMARY:"
   puts "Player 1 picks their symbol"
   puts "Player 1 is #{@player_one}"
