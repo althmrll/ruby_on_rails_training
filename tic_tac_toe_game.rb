@@ -35,11 +35,12 @@ def user_config
         puts "You can only pick between the two"
     end
   end
+  gameplay
 end
 
 #start game
 def gameplay
-  print_board
+  puts "Starting Game..."
 end
 
 #Print the board
@@ -53,6 +54,8 @@ def alternate
 end
 #gameplay summary (?)
 def summary
+  puts "Game Start"
+  puts
 end
 
 #ask if they want to replay or go back to main menu.
