@@ -14,10 +14,10 @@ def start_menu
   
   case answer
   when "Y" then user_config
-  when "O" then puts "Goodbye!"
+  when "N" then puts "Goodbye!"
   else
     puts "\n==================================="
-    puts "You can only pick between X and O"
+    puts "You can only pick between Y and N"
     puts "==================================="
   end
 end
@@ -32,13 +32,13 @@ def user_config
       when "X" then
         @player_two = "O"
         @current_player=@player_one
-        puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
+        puts "\nPlayer 1 is #{@player_one}, Player 2 is #{@player_two}"
         break
 
       when "O" then 
         @player_two = "X"
         @current_player=@player_two
-        puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
+        puts "\nPlayer 1 is #{@player_one}, Player 2 is #{@player_two}"
         break
 
       else
@@ -54,7 +54,7 @@ end
 def gameplay
   puts "\n==================================="
   puts "The game will consist of a 3x3 board. You can type from number 1 to 9 to mark it as 
-  yours."
+  yours. You need to create 3 lines or diagonals to win."
   puts "The marks are as follows:\n"
   puts " 1 | 2 | 3 "
   puts "---+---+---"
@@ -83,6 +83,33 @@ def print_board
   puts " #{@grid[7]} | #{@grid[8]} | #{@grid[9]} \n"
 end
 
+def check_win(symbol)
+  WINNING_LINES.any? do |line|
+    @grid[line[0]] == symbol &&
+    @grid[line[1]] == symbol &&
+    @grid[line[2]] == symbol
+  end
+end
+
+def check_full
+  while true
+    if @grid[@index.to_i].strip.empty?
+      @grid[@index.to_i]=@current_player
+      check_win
+      @occupied = @occupied+1
+      break
+    elsif !@grid[@index.to_i].strip.empty?
+      puts "That position is already occupied. Pick another."
+      print_board
+      turns_mechanic
+    else
+      puts "Invalid position, you can only pick from 1 to 9."
+      print_board
+      turns_mechanic
+    end
+  end
+end
+
 #Ask current player to input where they want to put their marks
 def turns_mechanic
   puts "Where do you want to put your mark? (1-9)"
@@ -103,24 +130,6 @@ def turns
     turns_mechanic
     @event= "Player 2 marks position #{@index}"
     @current_player=@player_one
-  end
-end
-
-def check_full
-  while true
-    if @grid[@index.to_i].strip.empty?
-      @grid[@index.to_i]=@current_player
-      @occupied = @occupied+1
-      break
-    elsif !@grid[@index.to_i].strip.empty?
-      puts "That position is already occupied. Pick another."
-      print_board
-      turns_mechanic
-    else
-      puts "Invalid position, you can only pick from 1 to 9."
-      print_board
-      turns_mechanic
-    end
   end
 end
 
