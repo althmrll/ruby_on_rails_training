@@ -14,7 +14,7 @@ def start_menu
   end
 end
 
-#Ask user
+#Ask user of preferred symbol
 def user_config
   while true
     puts "\nPick a symbol Player 1 (X/O)"
@@ -69,7 +69,21 @@ def print_board
 end
 
 #Ask current player to input where they want to put their marks
+def turns_mechanic
+  puts "Player #{@current_player.to_s}'s turn"
+  puts "Where do you want to put your mark? (1-9)"
+  index=gets.chomp
+  @game_events=[]
+  event= "Player #{@current_player.to_s} marks position #{index}"
+  @gmae_events.push(event)
+end
 def turns
+  case @current_player
+  when "1" then 
+    puts "Player 1's turn"
+  when "2"
+    puts "Player 1's turn"
+  end
 end
 #Print updated board
 #alternate between players until someone wins or the board gets full
@@ -104,7 +118,7 @@ def replay
        when "N" then user_config
        
        else "Invalid Inpu!!"
-        
+
        end
       break
 
