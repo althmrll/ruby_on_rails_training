@@ -16,17 +16,25 @@ end
 
 #Ask user
 def user_config
-  puts "Pick a symbol Player 1 (X/O)"
-  player_one = gets.chomp.upcase
+  while true
+    puts "Pick a symbol Player 1 (X/O)"
+    player_one = gets.chomp.upcase
 
-  case player_one
-  when "X" then player_two = "O"
-  when "O" then player_two = "X"
-  else
-    puts "You can only pick between the two"
+    case player_one
+      when "X" then
+        player_two = "O"
+        puts "player_one is #{player_one}, player two is #{player_two}"
+        
+      when "O" then 
+        player_two = "X"
+        puts "player_one is #{player_one}, player two is #{player_two}"
+
+      else
+        puts "You can only pick between the two"
+    end
   end
-  puts "player_one is #{player_one}, player two is #{player_two}"
 end
+
 #start game
 def gameplay
   print_board
@@ -50,3 +58,8 @@ def replay
 end
 
 start_menu
+
+#if player_two != ""
+    #puts "player_one is #{player_one}, player two is #{player_two}"
+    #break
+  #end
