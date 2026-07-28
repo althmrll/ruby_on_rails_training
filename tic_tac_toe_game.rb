@@ -5,8 +5,7 @@
 def start_menu
   puts "Welcome to Tic-Tac-Toe!\n"
   puts "Would you like to start the game? (Y/N)"
-  answer = gets.chomp
-  answer.upcase!
+  answer = gets.chomp.upcase
   
   case answer
   when "Y" then user_config
@@ -18,7 +17,7 @@ end
 #Ask user
 def user_config
   puts "Pick a symbol Player 1 (X/O)"
-  player_one = gets.chomp
+  player_one = gets.chomp.upcase
 
   case player_one
   when "X" then player_two = "O"
