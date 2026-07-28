@@ -84,7 +84,7 @@ def print_board
 end
 
 def check_win(symbol)
-  WINNING_LINES.any? do |line|
+ @wins.any? do |line|
     @grid[line[0]] == symbol &&
     @grid[line[1]] == symbol &&
     @grid[line[2]] == symbol
@@ -95,7 +95,7 @@ def check_full
   while true
     if @grid[@index.to_i].strip.empty?
       @grid[@index.to_i]=@current_player
-      check_win
+      check_win (@current_player)
       @occupied = @occupied+1
       break
     elsif !@grid[@index.to_i].strip.empty?
