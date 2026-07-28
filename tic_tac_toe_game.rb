@@ -1,7 +1,7 @@
 #tic-tac-toe-game
 #ruby tic_tac_toe_game.rb
-#
-@grid = [" "," "," "," "," "," "," "," "," "]
+
+@grid = [" "," "," "," "," "," "," "," "," "," "]
 #Start menu: ask user to start the game
 def start_menu
   puts "Welcome to Tic-Tac-Toe!"
@@ -62,11 +62,11 @@ end
 
 #Print the board
 def print_board
-  puts " #{@grid[0]} | #{@grid[1]} | #{@grid[2]} "
+  puts " #{@grid[1]} | #{@grid[2]} | #{@grid[3]} "
   puts "---+---+---"
-  puts " #{@grid[3]} | #{@grid[4]} | #{@grid[5]} "
+  puts " #{@grid[4]} | #{@grid[5]} | #{@grid[6]} "
   puts "---+---+---"
-  puts " #{@grid[6]} | #{@grid[7]} | #{@grid[8]} \n"
+  puts " #{@grid[7]} | #{@grid[8]} | #{@grid[9]} \n"
 end
 
 #Ask current player to input where they want to put their marks
