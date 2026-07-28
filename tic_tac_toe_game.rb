@@ -18,17 +18,17 @@ end
 def user_config
   while true
     puts "Pick a symbol Player 1 (X/O)"
-    player_one = gets.chomp.upcase
+    @player_one = gets.chomp.upcase
 
     case player_one
       when "X" then
-        player_two = "O"
-        puts "player_one is #{player_one}, player two is #{player_two}"
+        @player_two = "O"
+        puts "player_one is #{@player_one}, player two is #{@player_two}"
         break
 
       when "O" then 
-        player_two = "X"
-        puts "player_one is #{player_one}, player two is #{player_two}"
+        @player_two = "X"
+        puts "player_one is #{@player_one}, player two is #{@player_two}"
         break
 
       else
@@ -54,8 +54,11 @@ def alternate
 end
 #gameplay summary (?)
 def summary
+  puts "GAME SUMMARY:"
   puts "Game Start"
-  puts
+  puts "Player 1 picks their symbol"
+  puts "Player 1 picked #{@player_one}"
+  puts "Player 2 is #{@player_two}"
 end
 
 #ask if they want to replay or go back to main menu.
@@ -63,6 +66,7 @@ def replay
 end
 
 start_menu
+summary
 
 #if player_two != ""
     #puts "player_one is #{player_one}, player two is #{player_two}"
