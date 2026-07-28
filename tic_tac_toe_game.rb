@@ -2,11 +2,11 @@
 #ruby tic_tac_toe_game.rb
 
 @grid = [" "," "," "," "," "," "," "," "," "," "]
-@game_events=[]
-@occupied=0
-@wins=[[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7],[1,4,7],[2,5,8],[3,6,9]]
-@player_one="Player 1"
-@player_two="Player 2"
+@game_events = []
+@occupied = 0
+@wins = [[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7],[1,4,7],[2,5,8],[3,6,9]]
+@player_one = "Player 1"
+@player_two = "Player 2"
 
 #Start menu: ask user to start the game
 def start_menu
@@ -31,17 +31,17 @@ def user_config
     @player_one_symbol = gets.chomp.upcase
 
     case @player_one_symbol
-      when "X" then
-        @player_two_symbol = "O"
-        @current_player = @player_one
-        @current_player_symbol = @player_one_symbol
-        break
+    when "X" then
+      @player_two_symbol = "O"
+      @current_player = @player_one
+      @current_player_symbol = @player_one_symbol
+      break
 
-      when "O" then 
-        @player_two_symbol = "X"
-        @current_player = @player_two
-        @current_player_symbol = @player_two_symbol
-        break
+    when "O" then
+      @player_two_symbol = "X"
+      @current_player = @player_two
+      @current_player_symbol = @player_two_symbol
+      break
 
     else
       puts "\n==================================="
@@ -69,9 +69,10 @@ def gameplay
   print_board
 
   while @occupied < 9
-    turns
+    game_over = turns
     @game_events.push(@event)
     print_board#Print updated board
+    break if game_over
   end
   summary
   replay
@@ -104,53 +105,55 @@ def turns_mechanic
         @grid[@index.to_i] = @current_player_symbol
         @occupied += 1
         if check_win(@current_player_symbol)
-          ending_message="\n#{@current_player} wins!\n"
+          ending_message = "\n#{@current_player} wins!\n"
           puts ending_message
-          @game_events.push(ending_message)
-          break
+          @event = "#{@current_player} marked position #{@index} and WINS!"
+          return true
+        # Check for tie
+        elsif @occupied == 9
+          ending_message = "\nGame ends with a tie\n"
+          puts ending_message
+          @event = "#{@current_player} marked position #{@index} (TIE GAME)"
+          return true
         end
-      elsif !check_win(@player_one_symbol) && !check_win(@player_two_symbol) && @occupied == 9
-        puts "\nGame ends with a tie\n"
-        @game_events.push(ending_message)
-        return true
+        return false
+      else
+        puts "That position is already occupied. Pick another."
+        print_board
       end
-      return false
-    elsif if @grid[@index.to_i] != " "
-      puts "That position is already occupied. Pick another."
-      print_board
     else
       puts "Invalid position, you can only pick from 1 to 9."
       print_board
-    end
     end
   end
 end
 
 #alternate between players until someone wins or the board gets full
 def turns
-    case @current_player
-    when @player_one then
-      puts "Player 1's turn"
-      turns_mechanic
-      @event = "Player 1 marked position #{@index}"
-      @current_player = @player_two
-      @current_player_symbol = @player_two_symbol
-    when @player_two then
-      puts "Player 2's turn"
-      turns_mechanic
-      @event = "Player 2 marked position #{@index}"
-      @current_player = @player_one
-      @current_player_symbol = @player_one_symbol
-    end
+  game_over = false
+  case @current_player
+  when @player_one
+    puts "Player 1's turn"
+    game_over = turns_mechanic
+    @event = "Player 1 marked position #{@index}" unless game_over
+    @current_player = @player_two
+    @current_player_symbol = @player_two_symbol
+  when @player_two
+    puts "Player 2's turn"
+    game_over = turns_mechanic
+    @event = "Player 2 marked position #{@index}" unless game_over
+    @current_player = @player_one
+    @current_player_symbol = @player_one_symbol
+  end
+  return game_over
 end
 
 #gameplay summary
 def summary
   puts "\n==================================="
   puts "GAME SUMMARY:"
-  puts "Player 1 picks their symbol"
-  puts "Player 1 is #{@player_one}"
-  puts "Player 2 is #{@player_two}"
+  puts "Player 1 is #{@player_one_symbol}"
+  puts "Player 2 is #{@player_two_symbol}"
   puts "Game Start"
   for event in @game_events
     puts event
@@ -164,10 +167,10 @@ def replay
     answer = gets.chomp.upcase
 
     case answer
-      when "Y" then
+    when "Y" then
       @grid = [" "," "," "," "," "," "," "," "," "," "]
       @occupied = 0
-      @game_events=[]
+      @game_events = []
       puts "Same symbol as last game? (Y/N)"
       same = gets.chomp.upcase
 
@@ -181,7 +184,7 @@ def replay
       end
       break
 
-    when "N" 
+    when "N" then
       puts "That was fun! Goodbye!"
       break
 
