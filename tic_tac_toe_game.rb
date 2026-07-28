@@ -55,6 +55,8 @@ def gameplay
   puts "\nStarting Game...\n"
   puts "\n==================================="
   print_board
+  turns
+  print_board#Print updated board
 end
 
 #Print the board
@@ -76,6 +78,8 @@ def turns_mechanic
   event= "Player #{@current_player.to_s} marks position #{@index}"
   @gmae_events.push(event)
 end
+
+#alternate between players until someone wins or the board gets full
 def turns
   case @current_player
   when @player_one then 
@@ -88,10 +92,7 @@ def turns
     @grid[@index.to_i]=@player_two
   end
 end
-#Print updated board
-#alternate between players until someone wins or the board gets full
-def alternate
-end
+
 #gameplay summary (?)
 def summary
   puts "\n==================================="
@@ -140,8 +141,3 @@ end
 start_menu
 summary
 replay
-
-#if player_two != ""
-    #puts "player_one is #{player_one}, player two is #{player_two}"
-    #break
-  #end
