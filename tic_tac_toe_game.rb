@@ -50,11 +50,19 @@ def gameplay
   puts " 4 | 5 | 6 "
   puts "---+---+---"
   puts " 7 | 8 | 9 "
-  puts "\nStarting Game..."
+  puts "\nStarting Game...\n"
+  print_board
 end
 
 #Print the board
 def print_board
+  @grid = ["","","","","","","","",""]
+  
+  puts " #{grid[0]} | #{grid[1]} | #{grid[2]} "
+  puts "---+---+---"
+  puts " #{grid[3]} | #{grid[4]} | #{grid[5]} "
+  puts "---+---+---"
+  puts " #{grid[6]} | #{grid[7]} | #{@grid[8]} \n"
 end
 
 #Ask current player to input where they want to put their marks
