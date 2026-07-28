@@ -136,11 +136,13 @@ def turns
       turns_mechanic
       @event= "Player 1 marks position #{@index}"
       @current_player=@player_two
+      @current_player_symbol=@player_two_symbol
     when @player_two then
       puts "Player 2's turn"
       turns_mechanic
       @event= "Player 2 marks position #{@index}"
       @current_player=@player_one
+      @current_player_symbol=@player_one_symbol
     end
 end
 
