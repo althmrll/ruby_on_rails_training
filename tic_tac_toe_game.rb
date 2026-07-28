@@ -73,14 +73,15 @@ def gameplay
     @game_events.push(@event)
     print_board#Print updated board
     check_win(@current_player_symbol)
+    if check_win(@current_player_symbol)
+      ending_message="#{@current_player} wins"
+      @game_events.push(ending_message)
+      break
+    end
   end
   if occupied==9
     ending_message="Game ends with a tie"
     @game_events.push(ending_message)
-  elsif check_win(@current_player_symbol)
-    ending_message="#{@current_player} wins"
-    @game_events.push(ending_message)
-    @occupied=9
   end
   summary
   replay
@@ -135,12 +136,14 @@ def turns
       puts "Player 1's turn"
       turns_mechanic
       @event= "Player 1 marks position #{@index}"
+      check_win(@current_player_symbol)
       @current_player=@player_two
       @current_player_symbol=@player_two_symbol
     when @player_two then
       puts "Player 2's turn"
       turns_mechanic
       @event= "Player 2 marks position #{@index}"
+      check_win(@current_player_symbol)
       @current_player=@player_one
       @current_player_symbol=@player_one_symbol
     end
