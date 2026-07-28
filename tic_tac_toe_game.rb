@@ -5,6 +5,8 @@
 @game_events=[]
 @occupied=0
 @wins=[[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7],[1,4,5],[2,5,8],[3,6,9]]
+@player_one="Player 1"
+@player_two="Player 2"
 
 #Start menu: ask user to start the game
 def start_menu
@@ -26,19 +28,19 @@ end
 def user_config
   while true
     puts "\nPick a symbol Player 1 (X/O)"
-    @player_one = gets.chomp.upcase
+    @player_one_symbol = gets.chomp.upcase
 
-    case @player_one
+    case @player_one_symbol
       when "X" then
-        @player_two = "O"
+        @player_two_symbol = "O"
         @current_player=@player_one
-        puts "\nPlayer 1 is #{@player_one}, Player 2 is #{@player_two}"
+        @current_player_symbol=@player_one_symbol
         break
 
       when "O" then 
-        @player_two = "X"
+        @player_two_symbol = "X"
         @current_player=@player_two
-        puts "\nPlayer 1 is #{@player_one}, Player 2 is #{@player_two}"
+        @current_player_symbol=@player_two_symbol
         break
 
       else
@@ -47,6 +49,7 @@ def user_config
         puts "==================================="
     end
   end
+  puts "\nPlayer 1 is #{@player_one_symbol}, Player 2 is #{@player_two_symbol}"
   gameplay
 end
 
@@ -94,8 +97,8 @@ end
 def check_full
   while true
     if @grid[@index.to_i].strip.empty?
-      @grid[@index.to_i]=@current_player
-      check_win (@current_player)
+      @grid[@index.to_i]=@current_player_symbol
+      check_win (@current_player_symbol)
       @occupied = @occupied+1
       break
     elsif !@grid[@index.to_i].strip.empty?
@@ -119,17 +122,26 @@ end
 
 #alternate between players until someone wins or the board gets full
 def turns
-  case @current_player
-  when @player_one then 
-    puts "Player 1's turn"
-    turns_mechanic
-    @event= "Player 1 marks position #{@index}"
-    @current_player=@player_two
-  when @player_two then
-    puts "Player 2's turn"
-    turns_mechanic
-    @event= "Player 2 marks position #{@index}"
-    @current_player=@player_one
+  if check_win
+    ending_message="#{@current_player} wins"
+    @game_events.push(ending_message)
+  
+  elsif @occupied==9 && !check.win
+    ending_message="Game ends with a tie"
+    @game_events.push(ending_message)
+  else
+    case @current_player
+    when @player_one then 
+      puts "Player 1's turn"
+      turns_mechanic
+      @event= "Player 1 marks position #{@index}"
+      @current_player=@player_two
+    when @player_two then
+      puts "Player 2's turn"
+      turns_mechanic
+      @event= "Player 2 marks position #{@index}"
+      @current_player=@player_one
+    end
   end
 end
 
