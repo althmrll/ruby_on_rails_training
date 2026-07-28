@@ -2,6 +2,8 @@
 #ruby tic_tac_toe_game.rb
 
 @grid = [" "," "," "," "," "," "," "," "," "," "]
+@game_events=[]
+
 #Start menu: ask user to start the game
 def start_menu
   puts "Welcome to Tic-Tac-Toe!"
@@ -73,9 +75,6 @@ end
 def turns_mechanic
   puts "Where do you want to put your mark? (1-9)"
   @index=gets.chomp
-  @game_events=[]
-  event= "Player #{@current_player.to_s} marks position #{@index}"
-  @game_events.push(event)
 end
 
 #alternate between players until someone wins or the board gets full
@@ -84,11 +83,17 @@ def turns
   when @player_one then 
     puts "Player 1's turn"
     turns_mechanic
+    event= "Player 1 marks position #{@index}"
+    @game_events.push(event)
     @grid[@index.to_i]=@player_one
+    @current_player=@player_two
   when @player_two then
-    puts "Player 1's turn"
+    puts "Player 2's turn"
     turns_mechanic
+    event= "Player 2 marks position #{@index}"
+    @game_events.push(event)
     @grid[@index.to_i]=@player_two
+    @current_player=@player_one
   end
 end
 
@@ -100,6 +105,9 @@ def summary
   puts "Player 1 is #{@player_one}"
   puts "Player 2 is #{@player_two}"
   puts "Game Start"
+  for event in @game_events
+    puts event
+  end
 end
 
 #ask if they want to replay or go back to main menu.
