@@ -72,16 +72,6 @@ def gameplay
     turns
     @game_events.push(@event)
     print_board#Print updated board
-    if check_win(@current_player_symbol)
-      ending_message="\n#{@current_player} wins!\n"
-      puts ending_message
-      @game_events.push(ending_message)
-      break
-    end
-  end
-  if !check_win(@player_one_symbol) && !check_win(@player_two_symbol) && @occupied == 9
-    puts "\nGame ends with a tie\n"
-    @game_events.push(ending_message)
   end
   summary
   replay
@@ -113,11 +103,20 @@ def turns_mechanic
       if @grid[@index.to_i] == " "
         @grid[@index.to_i] = @current_player_symbol
         @occupied += 1
-        break
-      else
-        puts "That position is already occupied. Pick another."
-        print_board
+        if check_win(@current_player_symbol)
+          ending_message="\n#{@current_player} wins!\n"
+          puts ending_message
+          @game_events.push(ending_message)
+          break
+        end
       end
+    if !check_win(@player_one_symbol) && !check_win(@player_two_symbol) && @occupied == 9
+     puts "\nGame ends with a tie\n"
+      @game_events.push(ending_message)
+    else
+      puts "That position is already occupied. Pick another."
+      print_board
+    end
     else
       puts "Invalid position, you can only pick from 1 to 9."
       print_board
