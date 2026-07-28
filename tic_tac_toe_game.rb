@@ -20,7 +20,7 @@ def user_config
     puts "Pick a symbol Player 1 (X/O)"
     @player_one = gets.chomp.upcase
 
-    case player_one
+    case @player_one
       when "X" then
         @player_two = "O"
         puts "player_one is #{@player_one}, player two is #{@player_two}"
