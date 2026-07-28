@@ -107,8 +107,12 @@ def check_full
       @grid[@index.to_i]=@current_player
       @occupied = @occupied+1
       break
-    else
+    elsif !@grid[@index.to_i].strip.empty?
       puts "That position is already occupied. Pick another."
+      print_board
+      turns_mechanic
+    else
+      puts "Invalid position, you can only pick from 1 to 9."
       print_board
       turns_mechanic
     end
