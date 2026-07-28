@@ -3,7 +3,7 @@
 
 #Start menu: ask user to start the game
 def start_menu
-  puts "Welcome to Tic-Tac-Toe!\n"
+  puts "Welcome to Tic-Tac-Toe!"
   puts "Would you like to start the game? (Y/N)"
   answer = gets.chomp.upcase
   
@@ -40,6 +40,13 @@ end
 
 #start game
 def gameplay
+  puts "The game will consist of a 3x3 board. You can type from number 1 to 9 to mark it as yours."
+  puts "The marks are as follows:"
+  puts " 1 | 2 | 3 "
+  puts "---+---+---"
+  puts " 4 | 5 | 6 "
+  puts "---+---+---"
+  puts " 7 | 8 | 9 "
   puts "Starting Game..."
 end
 
@@ -55,10 +62,10 @@ end
 #gameplay summary (?)
 def summary
   puts "GAME SUMMARY:"
-  puts "Game Start"
   puts "Player 1 picks their symbol"
-  puts "Player 1 picked #{@player_one}"
+  puts "Player 1 is #{@player_one}"
   puts "Player 2 is #{@player_two}"
+  puts "Game Start"
 end
 
 #ask if they want to replay or go back to main menu.
