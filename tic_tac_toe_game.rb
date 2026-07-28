@@ -3,7 +3,7 @@
 
 @grid = [" "," "," "," "," "," "," "," "," "," "]
 @game_events=[]
-@available=9
+@occupied=0
 
 #Start menu: ask user to start the game
 def start_menu
@@ -59,7 +59,8 @@ def gameplay
   puts "\nStarting Game...\n"
   puts "\n==================================="
   print_board
-  while @available!=0
+
+  while @occupied!=9
     turns
     @game_events.push(@event)
     print_board#Print updated board
@@ -81,8 +82,7 @@ end
 def turns_mechanic
   puts "Where do you want to put your mark? (1-9)"
   @index=gets.chomp
-  @grid[@index.to_i]=@current_player
-  full_check
+  check_full
 end
 
 #alternate between players until someone wins or the board gets full
@@ -101,15 +101,18 @@ def turns
   end
 end
 
-#Checks if board it full
-def full_check
-    for spaces in @grid[1..9]
-      if spaces.strip.empty?
-        next
-      else
-        @available-=1
-      end
+def check_full
+  while true
+    if @grid[@index.to_i].strip.empty?
+      @grid[@index.to_i]=@current_player
+      @occupied = @occupied+1
+      break
+    else
+      puts "That position is already occupied. Pick another."
+      print_board
+      turns_mechanic
     end
+  end
 end
 
 #gameplay summary (?)
