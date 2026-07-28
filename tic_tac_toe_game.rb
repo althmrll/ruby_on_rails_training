@@ -109,17 +109,19 @@ def turns_mechanic
           @game_events.push(ending_message)
           break
         end
+      elsif !check_win(@player_one_symbol) && !check_win(@player_two_symbol) && @occupied == 9
+        puts "\nGame ends with a tie\n"
+        @game_events.push(ending_message)
+        return true
       end
-    if !check_win(@player_one_symbol) && !check_win(@player_two_symbol) && @occupied == 9
-     puts "\nGame ends with a tie\n"
-      @game_events.push(ending_message)
-    else
+      return false
+    elsif if @grid[@index.to_i] != " "
       puts "That position is already occupied. Pick another."
       print_board
-    end
     else
       puts "Invalid position, you can only pick from 1 to 9."
       print_board
+    end
     end
   end
 end
