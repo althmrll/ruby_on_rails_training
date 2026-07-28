@@ -176,6 +176,13 @@ def replay
 
       case same
       when "Y" then
+        if @player_one_symbol == "X"
+          @current_player = @player_one
+          @current_player_symbol = @player_one_symbol
+        else
+          @current_player = @player_two
+          @current_player_symbol = @player_two_symbol
+        end
         puts "\nPlayer 1 is #{@player_one_symbol}, Player 2 is #{@player_two_symbol}"
         gameplay
       when "N" then user_config
