@@ -64,6 +64,8 @@ def gameplay
     @game_events.push(@event)
     print_board#Print updated board
   end
+  summary
+  replay
 end
 
 #Print the board
@@ -101,9 +103,9 @@ end
 
 #Checks if board it full
 def full_check
-    for spaces in grid[1..9]
+    for spaces in @grid[1..9]
       if spaces.strip.empty?
-        continue
+        next
       else
         @available-=1
       end
@@ -141,7 +143,7 @@ def replay
 
        when "N" then user_config
        
-       else "Invalid Inpu!!"
+       else "Invalid Input!!"
 
        end
       break
@@ -159,5 +161,3 @@ def replay
 end
 
 start_menu
-summary
-replay
