@@ -72,6 +72,15 @@ def gameplay
     turns
     @game_events.push(@event)
     print_board#Print updated board
+    check_win(@current_player_symbol)
+  end
+  if occupied==9
+    ending_message="Game ends with a tie"
+    @game_events.push(ending_message)
+  elsif check_win(@current_player_symbol)
+    ending_message="#{@current_player} wins"
+    @game_events.push(ending_message)
+    @occupied=9
   end
   summary
   replay
@@ -98,7 +107,6 @@ def check_full
   while true
     if @grid[@index.to_i].strip.empty?
       @grid[@index.to_i]=@current_player_symbol
-      check_win (@current_player_symbol)
       @occupied = @occupied+1
       break
     elsif !@grid[@index.to_i].strip.empty?
@@ -122,14 +130,6 @@ end
 
 #alternate between players until someone wins or the board gets full
 def turns
-  if check_win
-    ending_message="#{@current_player} wins"
-    @game_events.push(ending_message)
-  
-  elsif @occupied==9 && !check.win
-    ending_message="Game ends with a tie"
-    @game_events.push(ending_message)
-  else
     case @current_player
     when @player_one then 
       puts "Player 1's turn"
@@ -142,8 +142,8 @@ def turns
       @event= "Player 2 marks position #{@index}"
       @current_player=@player_one
     end
-  end
 end
+
 
 #gameplay summary (?)
 def summary
