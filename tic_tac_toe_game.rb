@@ -3,6 +3,7 @@
 
 @grid = [" "," "," "," "," "," "," "," "," "," "]
 @game_events=[]
+@available=9
 
 #Start menu: ask user to start the game
 def start_menu
@@ -58,9 +59,11 @@ def gameplay
   puts "\nStarting Game...\n"
   puts "\n==================================="
   print_board
-  turns
-  @game_events.push(@event)
-  print_board#Print updated board
+  while @available!=0
+    turns
+    @game_events.push(@event)
+    print_board#Print updated board
+  end
 end
 
 #Print the board
@@ -98,16 +101,13 @@ end
 
 #Checks if board it full
 def full_check
-  available=9
-  while available!=0
     for spaces in grid[1..9]
       if spaces.strip.empty?
         continue
       else
-        available-=1
+        @available-=1
       end
     end
-  end
 end
 
 #gameplay summary (?)
