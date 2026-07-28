@@ -13,8 +13,11 @@ def start_menu
   
   case answer
   when "Y" then user_config
+  when "O" then puts "Goodbye!"
   else
-    puts "Goodbye!"
+    puts "\n==================================="
+    puts "You can only pick between X and O"
+    puts "==================================="
   end
 end
 
@@ -39,7 +42,7 @@ def user_config
 
       else
         puts "\n==================================="
-        puts "You can only pick between the two"
+        puts "You can only pick between X and O"
         puts "==================================="
     end
   end
@@ -49,7 +52,8 @@ end
 #start game
 def gameplay
   puts "\n==================================="
-  puts "The game will consist of a 3x3 board. You can type from number 1 to 9 to mark it as yours."
+  puts "The game will consist of a 3x3 board. You can type from number 1 to 9 to mark it as 
+  yours."
   puts "The marks are as follows:\n"
   puts " 1 | 2 | 3 "
   puts "---+---+---"
@@ -141,12 +145,19 @@ def replay
     case answer
       when "Y" then
        @grid = [" "," "," "," "," "," "," "," "," "]
+       @occupied=0
        puts "Same symbol as last game? (Y/N)"
        same=gets.chomp.upcase
 
        case same
-       when "Y" then puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
-       gameplay
+       when "Y" then
+        puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
+        if @current_player=="X"
+          gameplay
+        else
+          next_player
+          gameplay
+        end
 
        when "N" then user_config
        
