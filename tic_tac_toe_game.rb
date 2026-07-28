@@ -23,11 +23,13 @@ def user_config
     case @player_one
       when "X" then
         @player_two = "O"
+        @current_player=1
         puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
         break
 
       when "O" then 
         @player_two = "X"
+        @current_player=2
         puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
         break
 
@@ -67,6 +69,8 @@ def print_board
 end
 
 #Ask current player to input where they want to put their marks
+def turns
+end
 #Print updated board
 #alternate between players until someone wins or the board gets full
 def alternate
@@ -83,10 +87,42 @@ end
 
 #ask if they want to replay or go back to main menu.
 def replay
+  while true
+    puts "\n Do you want to play again? (Y/N)"
+    answer = gets.chomp.upcase
+
+    case answer
+      when "Y" then
+       @grid = [" "," "," "," "," "," "," "," "," "]
+       puts "Same symbol as last game? (Y/N)"
+       same=gets.chomp.upcase
+
+       case same
+       when "Y" then puts "\nplayer_one is #{@player_one}, player two is #{@player_two}"
+       gameplay
+
+       when "N" then user_config
+       
+       else "Invalid Inpu!!"
+        
+       end
+      break
+
+      when "N" then 
+        puts "That was fun! Goodbye!"
+        break
+
+      else
+        puts "\n==================================="
+        puts "You can only pick between the two"
+        puts "==================================="
+    end
+  end
 end
 
 start_menu
 summary
+replay
 
 #if player_two != ""
     #puts "player_one is #{player_one}, player two is #{player_two}"
