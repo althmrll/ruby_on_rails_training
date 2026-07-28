@@ -9,14 +9,28 @@ def start_menu
   answer.upcase!
   
   case answer
-  when "Y" then puts "Game Start!"
+  when "Y" then user_config
   else
     puts "Goodbye!"
   end
 end
 
-#start game (x goes first always)
+#Ask user
+def user_config
+  puts "Pick a symbol Player 1 (X/O)"
+  player_one = gets.chomp
+
+  case player_one
+  when "X" then player_two = "O"
+  when "O" then player_two = "X"
+  else
+    puts "You can only pick between the two"
+  end
+  puts "player_one is #{player_one}, player two is #{player_two}"
+end
+#start game
 def gameplay
+  print_board
 end
 
 #Print the board
