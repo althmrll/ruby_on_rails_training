@@ -208,5 +208,7 @@ class TicTacToe
   end
 end
 
-game = TicTacToe.new
-game.start_menu
+if __FILE__ == $0
+  game = Game.new
+  game.start_menu
+end
