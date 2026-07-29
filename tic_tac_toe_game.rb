@@ -203,6 +203,7 @@ class TicTacToe
         puts "You can only pick between Y and N"
         puts "==================================="
       end
+    break
     end
   end
 end
