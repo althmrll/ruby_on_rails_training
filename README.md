@@ -11,3 +11,7 @@ Day 2: Write a ruby script using input/output and control flow. (adult_in_all_co
 Day 3: Script that filters and transforms data using enumerables (rsvp_confirmation.rb)
 
 Day 4: Simple Tic-tac-toe game using RUby concepts (tic_tac_toe_game.rb)
+
+Day 5: Testing using Rspec (spec folder and .rspec file)
+
+Day 6: 
