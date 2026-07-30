@@ -14,4 +14,4 @@ Day 4: Simple Tic-tac-toe game using RUby concepts (tic_tac_toe_game.rb)
 
 Day 5: Testing using Rspec (spec folder and .rspec file)
 
-Day 6: 
+Day 6: Create rails app with basic CRUD <https://github.com/althmrll/blog_website.git>
